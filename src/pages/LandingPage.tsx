@@ -31,7 +31,8 @@ export function LandingPage() {
       </a>
       <MarketingNav />
 
-      <main id="main-content">
+      <main id="main-content" tabIndex={-1}>
+
         <section className="hero">
           <div className="hero__backdrop" aria-hidden="true">
             <span className="hero__grid" />

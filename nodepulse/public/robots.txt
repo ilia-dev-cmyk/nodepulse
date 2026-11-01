@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+
+# The dashboard is a local-only demo; nothing here requires crawling.
+Sitemap: https://lighthearted-biscotti-02c161.netlify.app/sitemap.xml

@@ -9,6 +9,9 @@ export function NotFoundPage() {
 
   return (
     <div className="not-found">
+      <a href="#main-content" className="skip-link">
+        Skip to content
+      </a>
       <div className="not-found__backdrop" aria-hidden="true">
         <span className="hero__grid" />
       </div>
@@ -17,7 +20,7 @@ export function NotFoundPage() {
           <Logo />
         </Link>
       </header>
-      <main className="not-found__main container" id="main-content">
+      <main className="not-found__main container" id="main-content" tabIndex={-1}>
         <div className="not-found__panel">
           <span className="not-found__code mono">404 · NO SIGNAL</span>
           <span className="not-found__icon" aria-hidden="true">

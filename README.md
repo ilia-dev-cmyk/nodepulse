@@ -77,11 +77,23 @@ Detail views are deep-linkable: `/app/monitors?monitor=core-api`,
 The app is a static SPA. `npm run build` outputs to `dist/`. Because it uses client-side
 routing, configure a single-page fallback to `index.html`:
 
-- **Netlify** — `public/_redirects` is included (`/* /index.html 200`) and is copied to
-  `dist/` automatically.
+- **Netlify** — `netlify.toml` pins the build (`npm run build`) and the publish directory
+  (`dist`) plus Node 22, so a site connected to this GitHub repository needs no manual build
+  settings. `public/_redirects` is included (`/* /index.html 200`) and is copied to `dist/`
+  automatically. `public/_headers` adds baseline security headers (`nosniff`,
+  `Referrer-Policy`, `X-Frame-Options`, a restrictive `Permissions-Policy`) and long-lived
+  immutable caching for hashed assets. `public/robots.txt` and `public/sitemap.xml` exist as
+  real files so the SPA catch-all cannot answer those paths with HTML.
+  Note: no `Content-Security-Policy` is shipped, because a nonce/hash policy needs server-side
+  templating that a plain static build does not provide.
 - **Vercel** — `vercel.json` is included with a catch-all rewrite.
 - **GitHub Pages / other hosts** — serve `index.html` for unknown paths, or add the
   equivalent rewrite rule.
+
+Deploying from this repository on Netlify: push to `main`, and the site rebuilds from the
+committed source. `node_modules/`, `dist/` and `.netlify/` are git-ignored, so only source
+files are uploaded. Any change under `public/` (redirects, headers, robots, sitemap, icons)
+must be committed to take effect — it is not baked into the app bundle.
 
 ## Verification
 
@@ -120,9 +132,19 @@ repository — so the checks below describe what was observed, not a shipped tes
 - Settings save/reload persistence of workspace name, default interval, notification
   preferences, and theme (light and dark).
 - No horizontal document overflow on any route at 320, 360, 390, 768, 1024, 1280, and 1440 px.
+- Deployment hygiene on the published Netlify build: `/robots.txt` and `/sitemap.xml` return
+  their real files (previously the SPA catch-all answered them with HTML), `/og.png` and
+  `/apple-touch-icon.png` resolve, and the skip link moves focus into `<main>` on the marketing,
+  dashboard, and 404 pages.
 
-Known gap: only Chromium was exercised. Safari and Firefox were not tested, so native
-`<dialog>` behaviour in those browsers relies on standards support rather than observed runs.
+The same core flows (native `<dialog>` drawers and modals, scroll lock, chart pointer and
+keyboard interaction, mobile navigation, settings persistence, theme) were also exercised in
+**Firefox 131** against the deployed build, with no console errors.
+
+Known gap: **WebKit/Safari was not tested.** The Playwright WebKit build could not start in the
+sandbox used for this verification (it requires libicu 66, which the host does not provide), so
+Safari behaviour — including native `<dialog>` support and its open/close events — relies on
+standards support rather than an observed run.
 
 ## Demo data and limitations
 
