@@ -1,0 +1,189 @@
+/* ============================================================
+   NodePulse design tokens
+   Dark is the primary theme; light is a fully designed override.
+   ============================================================ */
+
+:root {
+  /* Type */
+  --font-sans: "Inter", "Inter var", -apple-system, BlinkMacSystemFont, "Segoe UI",
+    Roboto, "Helvetica Neue", Arial, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, "SF Mono", Menlo,
+    Consolas, "Liberation Mono", monospace;
+
+  --text-2xs: 10.5px;
+  --text-xs: 11.5px;
+  --text-sm: 12.5px;
+  --text-base: 14px;
+  --text-md: 15px;
+  --text-lg: 17px;
+  --text-xl: 20px;
+  --text-2xl: 24px;
+  --text-3xl: 30px;
+
+  /* Spacing scale (4px base) */
+  --sp-1: 4px;
+  --sp-2: 8px;
+  --sp-3: 12px;
+  --sp-4: 16px;
+  --sp-5: 20px;
+  --sp-6: 24px;
+  --sp-7: 28px;
+  --sp-8: 32px;
+  --sp-10: 40px;
+  --sp-12: 48px;
+  --sp-16: 64px;
+  --sp-20: 80px;
+  --sp-24: 96px;
+
+  /* Radii */
+  --r-xs: 6px;
+  --r-sm: 8px;
+  --r-md: 10px;
+  --r-lg: 12px;
+  --r-xl: 16px;
+  --r-2xl: 20px;
+  --r-full: 999px;
+
+  /* Layout */
+  --sidebar-w: 248px;
+  --topbar-h: 64px;
+  --marketing-max: 1200px;
+  --content-pad: clamp(16px, 2.4vw, 32px);
+
+  /* Motion */
+  --ease-out: cubic-bezier(0.22, 0.61, 0.36, 1);
+  --ease-spring: cubic-bezier(0.2, 0.8, 0.2, 1);
+  --dur-fast: 140ms;
+  --dur: 200ms;
+  --dur-slow: 260ms;
+
+  /* Z-index */
+  --z-sticky: 30;
+  --z-dropdown: 60;
+  --z-overlay: 80;
+  --z-modal: 90;
+  --z-toast: 120;
+}
+
+/* ---------------------------- Dark (default) ---------------------------- */
+:root,
+[data-theme="dark"] {
+  color-scheme: dark;
+
+  --bg-primary: #080c14;
+  --bg-secondary: #0d1420;
+  --bg-elevated: #111b2a;
+  --bg-hover: #162235;
+  --bg-inset: #0a101a;
+  --bg-overlay: rgba(5, 9, 15, 0.74);
+  --bg-marketing: #080c14;
+
+  --border-subtle: #202d40;
+  --border-strong: #304158;
+  --border-faint: rgba(48, 65, 88, 0.5);
+
+  --text-primary: #f3f6fc;
+  --text-secondary: #a0aec2;
+  --text-muted: #718198;
+
+  --accent-cyan: #64ddf4;
+  --accent-cyan-strong: #9cecfa;
+  --accent-cyan-soft: rgba(100, 221, 244, 0.11);
+  --accent-cyan-line: rgba(100, 221, 244, 0.4);
+  --accent-purple: #a69bff;
+  --accent-purple-soft: rgba(166, 155, 255, 0.12);
+  --on-accent: #04121a;
+
+  --status-healthy: #5fe0b0;
+  --status-healthy-soft: rgba(95, 224, 176, 0.11);
+  --status-healthy-line: rgba(95, 224, 176, 0.32);
+  --status-warning: #f4c86a;
+  --status-warning-soft: rgba(244, 200, 106, 0.11);
+  --status-warning-line: rgba(244, 200, 106, 0.32);
+  --status-down: #ff7d91;
+  --status-down-soft: rgba(255, 125, 145, 0.11);
+  --status-down-line: rgba(255, 125, 145, 0.32);
+  --status-info: #82afff;
+  --status-info-soft: rgba(130, 175, 255, 0.11);
+  --status-info-line: rgba(130, 175, 255, 0.32);
+  --status-neutral: #a0aec2;
+  --status-neutral-soft: rgba(160, 174, 194, 0.09);
+
+  --chart-grid: rgba(48, 65, 88, 0.55);
+  --chart-axis: #718198;
+  --chart-crosshair: #304158;
+  --chart-fill-from: rgba(100, 221, 244, 0.22);
+  --chart-fill-to: rgba(100, 221, 244, 0.01);
+  --chart-secondary: #a69bff;
+
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.28);
+  --shadow-md: 0 10px 28px -16px rgba(0, 0, 0, 0.8);
+  --shadow-lg: 0 28px 70px -30px rgba(0, 0, 0, 0.9);
+  --focus-ring: 0 0 0 2px var(--bg-primary), 0 0 0 4px rgba(100, 221, 244, 0.6);
+
+  --hero-grid: rgba(48, 65, 88, 0.32);
+  --hero-glow: rgba(100, 221, 244, 0.09);
+  --preview-bg: #0a111c;
+  --marketing-nav-bg: rgba(8, 12, 20, 0.82);
+}
+
+/* ---------------------------- Light ---------------------------- */
+[data-theme="light"] {
+  color-scheme: light;
+
+  --bg-primary: #f4f7fb;
+  --bg-secondary: #ffffff;
+  --bg-elevated: #ffffff;
+  --bg-hover: #edf2f8;
+  --bg-inset: #f7fafd;
+  --bg-overlay: rgba(15, 27, 42, 0.42);
+  --bg-marketing: #f7f9fc;
+
+  --border-subtle: #dfe6f0;
+  --border-strong: #c2cedd;
+  --border-faint: rgba(194, 206, 221, 0.6);
+
+  --text-primary: #0c1726;
+  --text-secondary: #44556c;
+  --text-muted: #63758c;
+
+  --accent-cyan: #0b7285;
+  --accent-cyan-strong: #095b6b;
+  --accent-cyan-soft: rgba(11, 114, 133, 0.09);
+  --accent-cyan-line: rgba(11, 114, 133, 0.38);
+  --accent-purple: #5f4dd0;
+  --accent-purple-soft: rgba(95, 77, 208, 0.1);
+  --on-accent: #ffffff;
+
+  --status-healthy: #0b7a5b;
+  --status-healthy-soft: rgba(11, 122, 91, 0.1);
+  --status-healthy-line: rgba(11, 122, 91, 0.28);
+  --status-warning: #8f5f05;
+  --status-warning-soft: rgba(179, 121, 10, 0.13);
+  --status-warning-line: rgba(143, 95, 5, 0.28);
+  --status-down: #bd2740;
+  --status-down-soft: rgba(189, 39, 64, 0.1);
+  --status-down-line: rgba(189, 39, 64, 0.26);
+  --status-info: #1f56b3;
+  --status-info-soft: rgba(31, 86, 179, 0.1);
+  --status-info-line: rgba(31, 86, 179, 0.26);
+  --status-neutral: #55677e;
+  --status-neutral-soft: rgba(85, 103, 126, 0.09);
+
+  --chart-grid: rgba(194, 206, 221, 0.55);
+  --chart-axis: #63758c;
+  --chart-crosshair: #c2cedd;
+  --chart-fill-from: rgba(11, 114, 133, 0.18);
+  --chart-fill-to: rgba(11, 114, 133, 0.01);
+  --chart-secondary: #5f4dd0;
+
+  --shadow-sm: 0 1px 2px rgba(12, 23, 38, 0.06);
+  --shadow-md: 0 12px 28px -18px rgba(12, 23, 38, 0.28);
+  --shadow-lg: 0 30px 70px -34px rgba(12, 23, 38, 0.3);
+  --focus-ring: 0 0 0 2px var(--bg-secondary), 0 0 0 4px rgba(11, 114, 133, 0.5);
+
+  --hero-grid: rgba(148, 166, 190, 0.28);
+  --hero-glow: rgba(11, 114, 133, 0.06);
+  --preview-bg: #ffffff;
+  --marketing-nav-bg: rgba(247, 249, 252, 0.84);
+}
